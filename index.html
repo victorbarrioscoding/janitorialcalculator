@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Calculadora de Trabajos</title>
+</head>
+<script>
+function inicio()
+{
+	$("#quote1").hide();
+	$("#quote2").hide();
+	$("#quote3").hide();
+	$("#quote4").hide();
+	
+	}
+
+</script>
+
+<body onload="inicio()">
+
+<div data-role="page">
+
+	<div data-role="navbar">
+      
+    <ul>
+      <li><a class="ui-btn-active" href="#">CALCULADORA</a></li>    </ul>
+     
+        
+	</div><!-- /header -->
+
+
+
+	<div role="main" class="ui-content">
+    
+     <form role="form">
+  <div class="form-group">
+    <label for="email">Horas por dia:</label>
+    <input class="form-control" id="horas" type="number">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Dias por Mes:</label>
+    <input class="form-control" id="dias" type="number">
+  </div>
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#" data-icon="grid" onclick="CalculateVic()">Calcular</a></li>
+                <li><a href="#" data-icon="gear" onclick="limpiar()">Limpiar</a></li>
+            </ul>
+        </div><!-- /navbar -->
+	<div id="quote1">
+        <h3>Cobrando a 16 la Hora</h3>
+		<input name="total-f" id="cuota1" placeholder="Result">
+		<input name="total-f" id="pago1" placeholder="Result">
+		<input name="total-f" id="ganancia1" placeholder="Result">
+    </div>
+
+	<div id="quote2">
+  	    <h3>Cobrando a 18 la Hora</h3>
+		<input name="total-f" id="cuota2" placeholder="Result">
+		<input name="total-f" id="pago2" placeholder="Result">
+		<input name="total-f" id="ganancia2" placeholder="Result">
+    </div>
+
+
+	<div id="quote3">
+  	    <h3>Cobrando a 21 la Hora</h3>
+		<input name="total-f" id="cuota3" placeholder="Result">
+		<input name="total-f" id="pago3" placeholder="Result">
+		<input name="total-f" id="ganancia3" placeholder="Result">
+    </div>
+
+	<div id="quote4">
+  	    <h3>Cobrando a 25 la Hora</h3>
+		<input name="total-f" id="cuota4" placeholder="Result">
+		<input name="total-f" id="pago4" placeholder="Result">
+		<input name="total-f" id="ganancia4" placeholder="Result">
+        <h6 style="color:#F00">El domingo esta como tiempo extra 18.40 por hora pagados a los empleados</h6>
+    </div>
+
+</form>
+    
+  
+	</div><!-- /content -->
+
+
+	<div data-role="navbar">
+      
+    <ul>
+      <li><a class="ui-btn-active" href="#">Authentic Commercial Cleaning</a></li>    </ul>
+     
+        
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+
+
+</body>
+</html>
+<script>
+	function CalculateVic()
+{
+	var gethoras = document.getElementById('horas').value;
+	var getdias  = document.getElementById('dias').value;
+	totalHoras   = Number(gethoras) * Number(getdias);
+		
+	cuo1  = totalHoras * 16;
+	cuo2  = totalHoras * 18;
+	cuo3  = totalHoras * 21;
+	cuo4  = totalHoras * 25;
+
+	
+	if(getdias>26)
+	{
+		dobles1 = (getdias-26);
+		dobles1 = (dobles1 * gethoras);
+		dobles1 =  (dobles1 * 18.40);  
+		regular1 = (gethoras * 26);
+		regular1 = (regular1 * 12.25); 
+	}else{
+		dobles1 = 0;
+		regular1 = (gethoras * getdias);
+		regular1 = (regular1 * 12.25); 
+			
+	}
+	
+	pag1  = (regular1 + dobles1);
+	prof1 = (cuo1-pag1);
+	 
+
+	document.getElementById("cuota1").value = "Cuota Mensual Minima = " + cuo1;
+	document.getElementById("pago1").value = "Pago Mensual 12.25 hora  = " + pag1;
+	document.getElementById("ganancia1").value = "Ganancia  Mensual = " + prof1.toFixed(2);
+	$("#quote1").show();
+/*=================================  fin 15 por hora =====================================*/
+
+	prof2 = (cuo2-pag1);
+	document.getElementById("cuota2").value = "Cuota Mensual = " + cuo2;
+	document.getElementById("pago2").value = "Pago Mensual 12.25 hora = " + pag1;
+	document.getElementById("ganancia2").value = "Ganancia  Mensual = " + prof2.toFixed(2);
+	$("#quote2").show();
+/*=================================  fin 18 por hora =====================================*/
+
+	prof3 = (cuo3-pag1);
+	document.getElementById("cuota3").value = "Cuota Mensual = " + cuo3;
+	document.getElementById("pago3").value = "Pago Mensual 12.25 hora  = " + pag1;
+	document.getElementById("ganancia3").value = "Ganancia  Mensual = " + prof3.toFixed(2);
+	$("#quote3").show();
+/*=================================  fin 21 por hora =====================================*/
+
+
+	prof4 = (cuo4-pag1);
+	document.getElementById("cuota4").value = "Cuota Mensual = " + cuo4;
+	document.getElementById("pago4").value = "Pago Mensual 12.25 hora  = " + pag1;
+	document.getElementById("ganancia4").value = "Ganancia  Mensual = " + prof4.toFixed(2);
+	$("#quote4").show();
+/*=================================  fin 25 por hora =====================================*/
+
+
+}
+
+
+
+function limpiar()
+{
+	
+	$("#quote1").hide();
+	$("#quote2").hide();
+	$("#quote3").hide();
+	$("#quote4").hide();
+	
+}
+</script>
